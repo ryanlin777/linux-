@@ -1,0 +1,60 @@
+====nginx log查詢===
+
+查看error.log
+cat  /opt/logs/nginx/*error.log
+查看即時access.lg
+tail -f /opt/logs/nginx/*access.log
+查看access.log 裡面gz檔 
+zcat /opt/logs/nginx/001.access.log-2018-01-11.gz | awk '{print $13}' | sort | uniq -c | sort -r
+查看access訪問最頻繁的前10名IP
+awk '{print $3}' /opt/logs/nginx/*.access.log  | cut -d "=" -f 2 | sort -n |uniq -c | sort -rn | head -n 10
+查看access.log用戶IP訪問哪些路徑
+grep 'IP' /opt/logs/nginx/*.access.log |awk '{print $6}'|sort |uniq -c |sort -rn
+查看全部access.log status=200 並列出58.218.198.140.....這些IP 
+cat /opt/logs/nginx/*access.log | grep status=200 | grep -v "58.218.198.140\|*.*.*.*\|0.0.0.0\|20.10.10.5" | wc -l
+
+
+====web 查詢====
+linux用mozilla文字訪問網頁
+curl -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)"  https://XXX.XXb.com -v -k
+用58.218.198.140訪問網頁
+curl --header "X-Forwarded-For: 58.218.198.140" -A "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" https://XX..com -v
+訪問網頁
+lynx  https://X.XXXs.com
+
+====網頁測速====
+httping  http://cX.XXX.com -SGbs -c 1800
+
+====支付測試====
+url/notify.php
+
+====upstream測試====
+ping ip
+httping ip:port
+curl
+
+
+
+
+log確認單號
+cat /log/opt/nginx/*assess.log | grep ordernumber單號
+
+====redis狀態測試====
+http://url:5001/RedisCheck
+"WriteTime":"0","ReadTime":"0","Func":"RedisCheck","Result":1,"Desc":"OK"}
+
+====IP的網路流量DROP====
+阻擋
+iptables -A INPUT -s 8.8.8.8/32 -j DROP
+解綁
+iptables -D INPUT -s 8.8.8.8/32 -j DROP
+
+====尋找nginx命令位置====
+which nginx
+#renew profile
+source /etc/profile
+
+
+
+
+
