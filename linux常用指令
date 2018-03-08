@@ -22,3 +22,13 @@ which nginx
 ====renew profile====
 source /etc/profile
 
+====history加上時間標記====(需BASH 3.0 以上)
+vim ~/.bashrc
+rpm -q bash 
+echo "HISTTIMEFORMAT='<%F %T>:'" >> /etc/profile
+echo "export HISTTIMEFORMAT" >> /etc/profile
+source /etc/profile
+登出在登入exit
+history
+
+
