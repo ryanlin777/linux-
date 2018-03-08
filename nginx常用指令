@@ -1,4 +1,4 @@
-====nginx log查詢===
+====nginx log查詢====
 
 查看error.log
 cat  /opt/logs/nginx/*error.log
@@ -29,14 +29,11 @@ httping  http://cX.XXX.com -SGbs -c 1800
 url/notify.php
 
 ====upstream測試====
-ping ip
-httping ip:port
-curl
+ping "ip"
+httping "ip:port"
+curl "port"
 
-
-
-
-log確認單號
+paylog確認單號====
 cat /log/opt/nginx/*assess.log | grep ordernumber單號
 
 ====redis狀態測試====
