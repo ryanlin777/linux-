@@ -52,6 +52,13 @@ which nginx
 source /etc/profile
 
 
+====安裝V12 nginx版本要注意幾個地方
+vi /opt/APP/openresty/nginx/conf/waf.conf
+#lua_need_request_body on;
+
+確認是否有/lib/systemd/system/nginx.service
+
+
 
 
 
