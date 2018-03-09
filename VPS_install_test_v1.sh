@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #VPS安裝(proxy採用docker container建置)
+#系統時區、hostname修改、關閉Selinux
+#安裝docker、docker、zabbix_Agent、dnsmasq
+
 #取得變數
 ipaddr=`ss -t | grep ssh | awk '{ print $4}' | awk -F':' '{print $1}'`
 echo "VPS地區選擇："
