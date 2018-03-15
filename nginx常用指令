@@ -59,6 +59,19 @@ vi /opt/APP/openresty/nginx/conf/waf.conf
 確認是否有/lib/systemd/system/nginx.service
 
 
+====30-34新系統頁面檢測====
+新系統前台
+http://域名
+http://域名/apis/info
 
+新系統後台
+http://域名
+
+新系統PAY
+域名:30000
+域名:30000/info
+
+新系統APP
+http://域名:10000/apis/info
 
 
