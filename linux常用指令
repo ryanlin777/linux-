@@ -36,6 +36,6 @@ time tar -zpcvP -f /root/home_test001-002-003.tar.gz /home/001/ /home/002/ /home
 解壓回去原路徑，因為打包有用P
 tar xvpfz  /root/home_test001-002-003.tar.gz -C /
 
-====比對SSL MD5指令====
+====收到SSL檔案比對 MD5指令====
 openssl x509 -noout -modulus -in 032-cp899.20180314.com.crt | openssl md5
 openssl rsa -noout -modulus -in 032-cp899.20180314.com.key | openssl md5
