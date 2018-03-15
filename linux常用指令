@@ -39,3 +39,6 @@ tar xvpfz  /root/home_test001-002-003.tar.gz -C /
 ====收到SSL檔案比對 MD5指令====
 openssl x509 -noout -modulus -in 032-cp899.20180314.com.crt | openssl md5
 openssl rsa -noout -modulus -in 032-cp899.20180314.com.key | openssl md5
+
+====域名橫列直列用word換行====
+直列改橫列 用取代方式目標^p 取代為空格
