@@ -1,0 +1,19 @@
+HTTP常見回覆狀態代碼
+
+1×× 　　保留
+2×× 　　表示請求成功地接收
+3×× 　　為完成請求，用戶端需進一步細化請求
+4×× 　　用戶端錯誤
+5×× 　　伺服器錯誤
+500 Internal Server Error
+伺服器遭遇異常，阻止了當前請求的執行
+501 Not Implemented 
+伺服器沒有相應的執行動作來完成當前請求。
+502 Bad Gateway
+Web 伺服器用做閘道或代理伺服器時收到了無效回應。
+503 Service Unavailable 
+因為超載或維護導致伺服器不能處理當前請求。
+504 Gateway Timeout
+閘道訪問超時。
+505 Http Version Not Supported
+HTTP 版本不支援。
