@@ -1,0 +1,14 @@
+測試能否拿到回應畫面
+前台
+http://域名
+http://域名/apis/info
+
+後台
+http://域名
+
+PAY
+域名:30000
+域名:30000/info
+
+APP
+http://域名:10000/apis/info
