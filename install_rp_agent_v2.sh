@@ -95,5 +95,5 @@ service zabbix-agent status
 #檢查salt
 service salt-minion status
 
-cat /etc/zabbix/zabbix | grep Hostname=
+cat /etc/zabbix/zabbix.conf | grep Hostname=
 cat /etc/salt/minion_id
