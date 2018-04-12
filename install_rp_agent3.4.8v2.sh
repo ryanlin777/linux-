@@ -15,7 +15,7 @@ echo -e "\nYour salt name is: $saltname"
 read -p "確定安裝輸入yes, 離開按ctrl+c : " YES
 
 
-#改VPS的hostname
+#改hostname
 hostname $hostname
 echo $hostname > /etc/hostname
 hostnamectl set-hostname $hostname
