@@ -30,9 +30,16 @@ source /etc/profile
 登出在登入exit
 history
 
-====tar壓縮指令====
-比方說將001 002 003 ryan_file/test.sh資料, 壓縮到home_test001-002-003.tar.gz
-time tar -zpcvP -f /root/home_test001-002-003.tar.gz /home/001/ /home/002/ /home/003/ /ryan_file/test.sh 
+====tar壓縮指令資料打包====
+/opt/APP/openresty/nginx/conf/vhost/*.conf 
+/opt/APP/openresty/nginx/conf/nginx.conf 
+/opt/APP/openresty/nginx/conf/ssl/* 
+/opt/APP/openresty/nginx/conf/ma/ma.conf 
+/opt/Htdocs/* 
+/etc/sysconfig/iptables 
+/opt/APP/openresty/nginx/conf/*.crt 
+/opt/APP/openresty/nginx/conf/*.key"
+time tar -zpcvP -f /home/test_badkup4.tar.gz /opt/APP/openresty/nginx/conf/vhost/*.conf /opt/APP/openresty/nginx/conf/nginx.conf /opt/APP/openresty/nginx/conf/ssl/* /opt/APP/openresty/nginx/conf/ma/ma.conf /opt/Htdocs/* /etc/sysconfig/iptables /opt/APP/openresty/nginx/conf/*.crt /opt/APP/openresty/nginx/conf/*.key
 解壓回去原路徑，因為打包有用P
 tar xvpfz  /root/home_test001-002-003.tar.gz -C /
 
