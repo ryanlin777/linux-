@@ -4,12 +4,14 @@
 #系統時區、hostname修改、關閉Selinux、
 #安裝zabbix_Agent、Salt、
 
-read -p "輸入hostname 服務_品牌_編號:" hostname
+read -p "輸入hostname 服務-品牌-編號:" hostname
 read -p "輸入agent name 品牌_服務種類_編號:" agentname
-read -p "輸入salt name:" saltname
+read -p "輸入salt name 品牌號碼-品牌-服務-編號:" saltname
 
 echo -e "\nYour hostname is: $hostname"
+
 echo -e "\nYour zabbix name is: $agentname"
+
 echo -e "\nYour salt name is: $saltname"
 
 read -p "確定安裝輸入yes, 離開按ctrl+c : " YES
