@@ -95,7 +95,9 @@ echo '0 0 * * *  /usr/sbin/logrotate -f /etc/logrotate.sd/nginx' >> /var/spool/c
 #檢查目前zabbix_agent運作
 service zabbix-agent status
 #檢查salt
+service salt-minion restart
 service salt-minion status
+
 
 cat /etc/zabbix/zabbix_agentd.conf | grep Hostname=
 cat /etc/salt/minion_id
