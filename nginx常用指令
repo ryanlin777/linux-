@@ -57,5 +57,7 @@ vi /opt/APP/openresty/nginx/conf/waf.conf
 #lua_need_request_body on;
 
 確認是否有/lib/systemd/system/nginx.service
-
+====安裝V14 nginx版本lua打開了
+vi /opt/APP/openresty/nginx/conf/waf.conf
+lua_need_request_body on;
 
