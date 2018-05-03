@@ -49,3 +49,13 @@ openssl rsa -noout -modulus -in 032-cp899.20180314.com.key | openssl md5
 
 ====域名橫列直列用word換行====
 直列改橫列 用取代方式目標^p 取代為空格
+
+====iptables====
+cat /etc/sysconfig/iptables  查看iptables內容
+iptables -L -n
+
+開白名單443和80
+-A INPUT -s x.x.x.x/32 -p tcp -m multiport --dports 443,80 -m comment --comment "Customer Used" -j ACCEPT
+開網段名單
+-A INPUT -p tcp -m iprange --src-range x.x.x.x-x.x.x -m multiport --dports 443,80 -j ACCEPT
+
