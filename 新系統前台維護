@@ -1,0 +1,55 @@
+新系統前台維護頁面需更改時間  /opt/Htdocs/service/maintain.html
+
+                <div class="textcenter mt-5 bigRed">
+                        系统维护中...
+                </div>
+
+                <div class="textcenter mt-3">
+                        <h2>
+                                非常抱歉！例行维修中，请稍后访问。
+                        </h2>
+
+                  <p><span class="red">维护时间:05.15 06:00 ~ 05.15 08:00</span><br />
+
+                </div>
+
+                <div class="textcenter mt-3">
+                        反馈问题给客服；<a href="http://www.889kefu.com" target="_blank">在线客服</a>
+                </div>
+        </body>
+
+新系統前台wap維護頁面需更改時間  /opt/Htdocs/service/wap_maintain.html
+
+<body style="padding-top: .5rem;">
+    <div class="wrap">
+        <div class="header">
+            <div class="headerTop">
+                <h1 class="ui-toolbar-title">系统维护</h1>
+            </div>
+        </div>
+
+        <div class="logo">
+            <img id="logoId" src="">
+        </div>
+
+        <h3 class="tit">系统正在升级维护中</h3>
+
+         <p><span class="red">维护时间:05.15 06:00 ~ 05.15 08:00</span><br />
+
+        <h5 class="tit">
+            <a href="wap_home.html">返回首页</a>
+            <a href="http://www.889kefu.com">在线客服</a>
+        </h5>
+
+        <p class="tit">温馨提示：系统正在维护中</p>
+
+        
+        <div id="down">
+
+        </div>
+        <p class="tit wap-foot">版权所有：2009-2018©<span id="ownerName"></span></p>
+    </div>
+</body>
+
+
+
