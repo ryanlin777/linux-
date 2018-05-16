@@ -1,14 +1,18 @@
-測試能否拿到回應畫面
+用網頁測試能否拿到回應畫面
 前台
-http://域名
+http://域名/apis/healthChec  畫面為 {"code":200,"msg":null,"data":"passed"}
 http://域名/apis/info
 
 後台
-http://域名
+http://域名/apis/healthCheck 畫面為 {"code":200,"msg":null,"data":"passed"}
 
 PAY
-域名:30000
-域名:30000/info
+域名:30000 畫面為 welcome
+域名:30000/info 畫面為 {
+	"git":{
+		"build":{
+			"host":"sg04-depoly-001",
 
-APP
-http://域名:10000/apis/info
+APP 用web測試
+http://域名:10000/apis/info 畫面為{"git":{"commit":{"time":"2018.05.14 07:49:42","id":"b9e8ce2"},"branch":"origin/release_2018-02-crk"}}
+http://域名:10000/apishealthCheck  畫面為{"code":200,"msg":"passed","data":300}
