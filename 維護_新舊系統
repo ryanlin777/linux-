@@ -58,7 +58,7 @@ sed -i 's/^\s*set $MAM 1/\    set $MAM 0/g'  /opt/APP/openresty/nginx/conf/vhost
     </div>
 </body>
 
-舊系統
+舊系統前台
 1.維護開始 將『  0  』切為『  1  』
 sed -i 's/^\s*set $MAM 0/\    set $MAM 1/g'  /opt/APP/openresty/nginx/conf/vhost/*.conf
 2.維護結束 將『  1  』切為『  0  』
@@ -109,3 +109,21 @@ sed -i 's/^\s*set $MAM 1/\    set $MAM 0/g'  /opt/APP/openresty/nginx/conf/vhost
     </div>
 
 </body></html>
+
+舊APP切換維謢模式說明
+
+主要whtool裡面的執行檔，是生成 wh.dat的工具，將wh.dat生成出來，放入/opt/APP/openresty/nginx/conf/lua_Script/APP/wh.dat
+
+開始APP維謢模式
+sed -i 's/set\ \$AppMaintainMode\ 0/\set\ \$AppMaintainMode\ 1/g' /opt/APP/openresty/nginx/conf/vhost/*.conf
+sed -i 's/set\ \$AppMaintainLog\ 0/\set\ \$AppMaintainLog\ 1/g' /opt/APP/openresty/nginx/conf/vhost/*.conf
+service nginx reload
+
+關閉APP維謢模式
+rm /opt/APP/openresty/nginx/conf/lua_Script/APP/wh.dat -rf
+sed -i 's/set\ \$AppMaintainMode\ 1/\set\ \$AppMaintainMode\ 0/g' /opt/APP/openresty/nginx/conf/vhost/*.conf
+sed -i 's/set\ \$AppMaintainLog\ 1/\set\ \$AppMaintainLog\ 0/g' /opt/APP/openresty/nginx/conf/vhost/*.conf
+service nginx reload
+
+
+
