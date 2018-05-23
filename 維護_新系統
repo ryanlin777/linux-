@@ -1,9 +1,10 @@
-新系統前台 要更改.conf maintain.html wap_maintain.html
+維護-新系統============================================================================================================
+
+新系統前台 /opt/Htdocs/service/maintain.html   /opt/Htdocs/service/wap_maintain.html
 1.維護開始 將『  0  』切為『  1  』
 sed -i 's/^\s*set $MAM 0/\    set $MAM 1/g'  /opt/APP/openresty/nginx/conf/vhost/*.conf
 2.維護結束 將『  1  』切為『  0  』
 sed -i 's/^\s*set $MAM 1/\    set $MAM 0/g'  /opt/APP/openresty/nginx/conf/vhost/*.conf
-
 
 =========維護頁面需更改時間  /opt/Htdocs/service/maintain.html
 
@@ -58,58 +59,7 @@ sed -i 's/^\s*set $MAM 1/\    set $MAM 0/g'  /opt/APP/openresty/nginx/conf/vhost
     </div>
 </body>
 
-舊系統維護  前台==========================================================================================================
-1.維護開始 將『  0  』切為『  1  』
-sed -i 's/^\s*set $MAM 0/\    set $MAM 1/g'  /opt/APP/openresty/nginx/conf/vhost/*.conf
-2.維護結束 將『  1  』切為『  0  』
-sed -i 's/^\s*set $MAM 1/\    set $MAM 0/g'  /opt/APP/openresty/nginx/conf/vhost/*.conf
-
-維護頁面要修改時間 /opt/Htdocs/ma/maintain.html        /opt/Htdocs/ma/wap_maintain.html
-
-===========maintain.html==========格式如下
-<body>
-
-</body>
-<div class="center">
-    <div class="left"><img src="mimages/system_img.jpg"></div>
-    <div class="right">
-        <h3 class="h3-top">系统公告</h3>
-        <p class="gray">我们将很快恢复服务</p>
-        <p><span class="red">例行维护</span> 进行中，请稍后访问</p>
-	            <p><span style="color:#e74c3c">维护时间:05.18 02:00 ~ 05.18 08:00</span><br />
-		<p><a href="https://www.wcpkf.com/">在线客服</a>
-                <p style="font-size: 80%; line-height: 24px;">温馨提示：系统正在维护中<br>
-    </div>
-</div>
-</html>
-
-
-
-==========wap_maintain.html===========格式如下
-<body>
-	<div class="header">
-        <div class="headerTop">
-            <h1 class="ui-toolbar-title">系统维护</h1>
-        </div>
-    </div>
-    <div id="wrapper_1" class="scorllmain-content nobottom_bar">
-        <div class="sub_ScorllCont">
-            <div class="mine-message">
-                <div class="main-img"><img src="mimages/maintain.png"></div>
-            </div>
-            <div class="main-mess">
-               <h3>系统正在升级维护中</h3>
-             <p>维护开始时间：<span style="color:#e74c3c">05.18 02:00</span><br />
-                维护结束时间：<span style="color:#e74c3c">05.18 08:00</span></p>              
-		<a class="grey" href="wap_home.html">返回首页</a>　　<a class="grey" href="https://www.wcpkf.com/">在线客服</a>
-            </div>
-
-        </div>
-    </div>
-
-</body></html>
-
-舊APP切換維謢模式說明
+新APP切換維謢模式說明
 
 主要whtool裡面的執行檔，是生成 wh.dat的工具，將wh.dat生成出來，上傳放入/opt/APP/openresty/nginx/conf/lua_Script/APP/wh.dat
 
