@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+#hostname.minion_id.zabbix_name Check
+cat /etc/salt/minion_id
+cat /opt/APP/openresty/nginx/conf  | grep Hostname=
+
+#nginx Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
+
+cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "AppMaintainLog\|AppMaintainMode"
+
+ls -lrt /opt/APP/openresty/nginx/conf/lua_Script
+
+#RP service Check
+systemctl  status nginx  | grep running
+systemctl  status zabbix-agent | grep running
+systemctl  status salt-minion | grep running
+
+#log Check
+ll /opt/logs/nginx/
+tail -n 5  /opt/logs/nginx/*access.log | grep status=
+
+#crontab Check
+crontab -l
