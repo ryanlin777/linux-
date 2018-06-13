@@ -3,7 +3,7 @@
 
 #hostname.minion_id.zabbix_name Check
 cat /etc/salt/minion_id
-cat /etc/zabbix/zabbix_agent.conf | grep Hostname=
+cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
 
 #nginx Check
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
