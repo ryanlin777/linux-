@@ -2,7 +2,7 @@
 
 
 #hostname.minion_id.zabbix_name Check
-cat /etc/salt/minion_id
+cat /etc/salt/minion_id | grep 0
 cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
 
 #nginx Check
@@ -25,3 +25,4 @@ tail -n 5  /opt/logs/nginx/*access.log | grep status=
 
 #crontab Check
 crontab -l
+
