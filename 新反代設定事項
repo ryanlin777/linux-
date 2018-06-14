@@ -1,0 +1,26 @@
+===前台
+geoip
+conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+crontab vi /var/spool/cron/root
+optdata修改(檔名、內容 cd /opt/optdata/
+log刪除有問題的rm -rf /opt/logs/nginx/
+
+
+===後台
+iptables
+crontab vi /var/spool/cron/root
+
+conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+nn4iy.maeh5seux.com lh9bh.eir9ugiw7.com
+log刪除有問題的rm -rf /opt/logs/nginx/
+
+
+==pay
+crontab vi /var/spool/cron/root
+pay、npay設定(後端port、Front_web_100xx、access_log、error_log、增加域名)
+log刪除有問題的rm -rf /opt/logs/nginx/
+p.gaiw6tohp.com p.aihaegh3k.com
+
+==app
+conf設定(後端port、Front_web_100xx、access_log、error_log、增加域名)
+log刪除有問題的rm -rf /opt/logs/nginx/
