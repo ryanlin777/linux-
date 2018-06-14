@@ -10,7 +10,9 @@ cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
 
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
 
+
 cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "AppMaintainLog\|AppMaintainMode"
+cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "MAM"
 
 ls -lrt /opt/APP/openresty/nginx/conf/lua_Script/APP/appMaintain.luac
 
