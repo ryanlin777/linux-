@@ -28,3 +28,5 @@ tail -n 5  /opt/logs/nginx/*access.log | grep status=
 #crontab Check
 crontab -l
 
+前台 要看geoip 
+後台 要看iptales
