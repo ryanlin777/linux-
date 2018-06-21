@@ -13,6 +13,13 @@ grep 'IP' /opt/logs/nginx/*.access.log |awk '{print $6}'|sort |uniq -c |sort -rn
 查看全部access.log status=200 並列出58.218.198.140.....這些IP 
 cat /opt/logs/nginx/*access.log | grep status=200 | grep -v "58.218.198.140\|*.*.*.*\|0.0.0.0\|20.10.10.5" | wc -l
 
+====iptables擋443;80====
+   iptables -I INPUT -s 8.8.8.8 -p tcp -m multiport --dports 443,80 -j ACCEPT  ///iptables 暫時增加ip
+   iptables -A INPUT -p tcp -m multiport --dports 443,80 -j DROP  ///iptables擋443;80
+
+====刪除iptables====
+iptables -D INPUT 1
+
 
 ====web 查詢====
 linux用mozilla文字訪問網頁
