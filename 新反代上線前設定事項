@@ -1,31 +1,163 @@
-===前台
-geoip
-conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
-crontab vi /var/spool/cron/root
-optdata修改(檔名、內容 cd /opt/optdata/
-log刪除有問題的rm -rf /opt/logs/nginx/
-查看iptables -L -n
+================================================================================前台檢查重點
+1.服務啟用
+2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+3.crontab -l
+4.log刪除有問題的rm -rf /opt/logs/nginx/
+5.Hostname
+6.保留ip
+7.dns解析測試
+8.geo ip 比對
+
+----------FE指令---------
+##check hostname salt zabbix_name
+cat /etc/salt/minion_id | grep 0
+cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
+##RP service Check nginx zabbix salt
+systemctl  status nginx  | grep running
+systemctl  status zabbix-agent | grep running
+systemctl  status salt-minion | grep running
+##nginx Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+##設定檔保留ip Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
+##排程check
+crontab -l
+##nginx 設定檔
+nginx -t
+##iptalbes 預設關閉
+systemctl status iptables
+##維護設定0為關
+cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "MAM"
+#access log name check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "access_log\|error_log"
+##阻擋80.443 0.0.0.0
+iptables -L -n
+##check yaml
+ll /opt/optdata/ | grep yaml
+cat /opt/optdata/*yaml
+##check geo ip和 數量
+cat /opt/APP/openresty/nginx/conf/nginx.conf | grep /32
+cat /opt/APP/openresty/nginx/conf/nginx.conf | grep /32 | wc -l
+##後端測試
+curl 3.167.181.11:11054/info
+curl 2.83.122.219:11054/info
+
+###查看iptables -L -n
 未上線前需阻擋80.443       iptables -A INPUT -p tcp -m multiport --dports 443,80 -j DROP
 加80.443白名單
 iptables -I INPUT -s 333.128.155.46  -p tcp -m multiport --dports 443,80 -j ACCEPT
 加80.443白名單 網段
 iptables -I INPUT -p tcp -m iprange --src-range 333.200.209.250-333.200.209.254 -m multiport --dports 80,443 -j ACCEPT
 
-===後台
-iptables
-crontab vi /var/spool/cron/root
-
-conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
-nn4iy.maeh5seux.com lh9bh.eir9ugiw7.com
-log刪除有問題的rm -rf /opt/logs/nginx/
 
 
-==pay
-crontab vi /var/spool/cron/root
-pay、npay設定(後端port、Front_web_100xx、access_log、error_log、增加域名)
-log刪除有問題的rm -rf /opt/logs/nginx/
-p.gaiw6tohp.com p.aihaegh3k.com
 
-==app
-conf設定(後端port、Front_web_100xx、access_log、error_log、增加域名)
-log刪除有問題的rm -rf /opt/logs/nginx/
+================================================================================後台檢查重點
+1.服務啟用
+2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+3.crontab -l
+4.log刪除有問題的rm -rf /opt/logs/nginx/
+5.Hostname
+6.保留ip
+7.dns解析測試
+8.iptables 比對
+
+----------BE指令---------
+##iptables 比對
+cat /etc/sysconfig/iptables
+##check hostname salt zabbix_name
+cat /etc/salt/minion_id | grep 0
+cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
+##RP service Check nginx zabbix salt
+systemctl  status nginx  | grep running
+systemctl  status zabbix-agent | grep running
+systemctl  status salt-minion | grep running
+#nginx Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+##設定檔保留ip Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
+##排程check
+crontab -l
+##nginx 設定檔
+nginx -t
+##iptalbes 預設開啟
+systemctl status iptables
+#access log name check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "access_log\|error_log"
+##後端測試
+curl 00.194.170.100:21054/info
+curl 00.97.71.219:20054/info 
+
+
+
+
+================================================================================PAY檢查重點
+1.服務啟用
+2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+3.crontab -l
+4.log刪除有問題的rm -rf /opt/logs/nginx/
+5.Hostname
+6.保留ip
+7.dns解析測試
+8.npay 設定檔
+
+----------pay指令---------
+##check hostname salt zabbix_name
+cat /etc/salt/minion_id | grep 0
+cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
+##RP service Check nginx zabbix salt
+systemctl  status nginx  | grep running
+systemctl  status zabbix-agent | grep running
+systemctl  status salt-minion | grep running
+#nginx Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+##設定檔保留ip Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
+##排程check
+crontab -l
+##nginx 設定檔
+nginx -t
+##iptalbes 預設關
+systemctl status iptables
+#access log name check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "access_log\|error_log"
+##後端測試
+curl 00.194.170.100:21054/info
+curl 00.97.71.219:20054/info 
+
+
+
+
+================================================================================APP檢查重點
+1.服務啟用
+2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
+3.crontab -l
+4.log刪除有問題的rm -rf /opt/logs/nginx/
+5.Hostname
+6.保留ip
+7.dns解析測試
+
+----------APP指令---------
+##check hostname salt zabbix_name
+cat /etc/salt/minion_id | grep 0
+cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
+##RP service Check nginx zabbix salt
+systemctl  status nginx  | grep running
+systemctl  status zabbix-agent | grep running
+systemctl  status salt-minion | grep running
+#nginx Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+##設定檔保留ip Check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
+##排程check
+crontab -l
+##nginx 設定檔
+nginx -t
+##iptalbes 預設關
+systemctl status iptables
+#access log name check
+cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "access_log\|error_log"
+##後端測試
+curl 00.194.170.100:21054/info
+curl 00.97.71.219:20054/info 
+
