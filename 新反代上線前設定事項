@@ -1,12 +1,13 @@
 ================================================================================前台檢查重點
 1.服務啟用
 2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
-3.crontab -l
+3.Crontab是否有設定，未上線前把Splunk註解掉
 4.log刪除有問題的rm -rf /opt/logs/nginx/
 5.Hostname
 6.保留ip
 7.dns解析測試
 8.geo ip 比對
+9.維護資料夾確認
 
 ----------FE指令---------
 ##check hostname salt zabbix_name
@@ -18,14 +19,18 @@ systemctl  status zabbix-agent | grep running
 systemctl  status salt-minion | grep running
 ##nginx Check
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
+ll /opt/APP/openresty/nginx/conf/vhost/*.conf
 ##設定檔保留ip Check
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "203.177.179.69\|203.177.171.98\|112.199.32.122"
-##排程check
+##排程check Crontab是否有設定，未上線前把Splunk註解掉
 crontab -l
 ##nginx 設定檔
 nginx -t
 ##iptalbes 預設關閉
 systemctl status iptables
+##維護資料夾確認有無檔案
+ll /opt/Htdoc/ma
+ll /opt/Htdoc/service
 ##維護設定0為關
 cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "MAM"
 #access log name check
@@ -144,7 +149,7 @@ cat /etc/zabbix/zabbix_agentd.conf | grep Hostname
 ##RP service Check nginx zabbix salt
 systemctl  status nginx  | grep running
 systemctl  status zabbix-agent | grep running
-systemctl  status salt-minion | grep running
+systemctl  status salt-minion  | grep running
 #nginx Check
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep server
 ##設定檔保留ip Check
@@ -155,8 +160,13 @@ crontab -l
 nginx -t
 ##iptalbes 預設關
 systemctl status iptables
-#access log name check
+##access log name check
 cat /opt/APP/openresty/nginx/conf/vhost/*.conf | grep "access_log\|error_log"
+##維護資料夾
+ll /opt/APP/openresty/nginx/conf/lua_Script/APP
+##維護設定為0關閉
+cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep "AppMaintainLog\|AppMaintainMode"
+
 ##後端測試
 curl 00.194.170.100:21054/info
 curl 00.97.71.219:20054/info 
