@@ -4,7 +4,12 @@ conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加�
 crontab vi /var/spool/cron/root
 optdata修改(檔名、內容 cd /opt/optdata/
 log刪除有問題的rm -rf /opt/logs/nginx/
-
+查看iptables -L -n
+未上線前需阻擋80.443       iptables -A INPUT -p tcp -m multiport --dports 443,80 -j DROP
+加80.443白名單
+iptables -I INPUT -s 333.128.155.46  -p tcp -m multiport --dports 443,80 -j ACCEPT
+加80.443白名單 網段
+iptables -I INPUT -p tcp -m iprange --src-range 333.200.209.250-333.200.209.254 -m multiport --dports 80,443 -j ACCEPT
 
 ===後台
 iptables
