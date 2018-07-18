@@ -1,0 +1,36 @@
+若遇syn攻擊，若有syn超過200要注意，可加大max_syn為手段，線上反代預設為256，加大SYN隊列長度可以容納更多等待連接的網絡連接數，打開SYN Cookie功能可以阻止部分。
+
+SYN攻擊是利用TCP/IP協議3次握手的原理，發送大量的建立連接的網絡包，但不實際建立連接，最終導致被攻擊服務器的網絡隊列被佔滿，無法被正常用戶訪問。
+
+Linux內核提供了若干SYN相關的配置，用命令：
+
+sysctl -a | grep syn 查看設定↓
+
+fs.quota.syncs = 0
+fs.xfs.inherit_sync = 1
+fs.xfs.xfssyncd_centisecs = 3000
+net.ipv4.tcp_max_syn_backlog = 256      ←tcp_max_syn_backlog是SYN隊列的長度
+net.ipv4.tcp_syn_retries = 6
+sysctl: reading key "net.ipv6.conf.all.stable_secret"
+net.ipv4.tcp_synack_retries = 5
+net.ipv4.tcp_syncookies = 1             ←tcp_syncookies是一個開關1為打開SYN Cookie功能，該功能可以防止部分SYN攻擊
+net.ipv6.conf.all.max_desync_factor = 600
+sysctl: reading key "net.ipv6.conf.default.stable_secret"
+net.ipv6.conf.default.max_desync_factor = 600
+sysctl: reading key "net.ipv6.conf.eth0.stable_secret"
+net.ipv6.conf.eth0.max_desync_factor = 600
+sysctl: reading key "net.ipv6.conf.lo.stable_secret"
+net.ipv6.conf.lo.max_desync_factor = 600
+
+加大SYN隊列長度可以容納更多等待連接的網絡連接數，打開SYN Cookie功能可以阻止部分
+
+調整上述設置的方法是增加SYN隊列長度到2048：
+sysctl -w net.ipv4.tcp_max_syn_backlog=1024
+
+打開SYN COOKIE功能：
+sysctl -w net.ipv4.tcp_syncookies=1
+sysctl -p 更新
+
+若遇syn攻擊，若有syn超過200要注意，可加大max_syn為手段，線上反代預設為256，加大SYN隊列長度可以容納更多等待連接的網絡連接數，打開SYN Cookie功能可以阻止部分。
+
+SYN攻擊是利用TCP/I
