@@ -1,0 +1,13 @@
+【利用WAF來做基本防護】
+cd /opt/APP/openresty/openstar/conf_json
+vi base.json
+
+將"rewrite_Mod"設定為"on"
+cd /opt/APP/openresty/openstar/conf_json
+vi rewrite_Mod.json 
+
+裡面有一個set-cookie的值，可以打一串亂數數值如 "set_cookie":["kjfkjfkl!Kjdka9","tokenYouname"],
+"kjfkjfkl!Kjdka9" ←打亂數
+最後重啟服務
+service nginx stop
+service nginx start
