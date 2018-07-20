@@ -54,9 +54,10 @@ iptables -I INPUT -s 333.128.155.46  -p tcp -m multiport --dports 443,80 -j ACCE
 加80.443白名單 網段
 iptables -I INPUT -p tcp -m iprange --src-range 333.200.209.250-333.200.209.254 -m multiport --dports 80,443 -j ACCEPT
 
-
-
-
+##清除所有 
+iptables -F 刪除所有的規則
+iptables -X 刪除指定的規則鏈(chain)
+systemctl stop iptables
 ================================================================================後台檢查重點
 1.服務啟用
 2.conf設定(後端port、Front_web_100xx、access_log、error_log、ssl、增加域名)
