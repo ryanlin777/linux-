@@ -1,0 +1,101 @@
+1.ssh proxy server
+2.az login:
+
+
+
+====================支付========================================================================================================================================
+az network public-ip create --resource-group pay01 --location eastasia --name pay-044-002 --allocation-method static --idle-timeout 4                  ####建立public-ip網卡
+az network public-ip create --resource-group pay01 --location eastasia --name pay-048-02 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group pay01 --location eastasia --name pay-050-02 --allocation-method static --idle-timeout 4
+
+az network nic create --resource-group pay01 --location eastasia --name pay-047-02 --vnet-name vnetwork --subnet vnetwork --network-security-group pay_java --public-ip-address pay-047-02     ####建立公共靜態ip，並關連至網卡
+az network nic create --resource-group pay01 --location eastasia --name pay-048-02 --vnet-name vnetwork --subnet vnetwork --network-security-group pay_java --public-ip-address pay-048-02
+az network nic create --resource-group pay01 --location eastasia --name pay-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group pay_java --public-ip-address pay-050-02
+
+az disk create --resource-group pay01 --name pay-047-02  --source pay-041-02 --sku Standard_LRS     ####複製磁碟(用source pay-041-02)做047的disk
+az disk create --resource-group pay01 --name pay-048-02  --source pay-041-02 --sku Standard_LRS
+az disk create --resource-group pay01 --name pay-050-02  --source pay-041-02 --sku Standard_LRS
+
+az vm create --resource-group pay01 --name pay-047-02 --nics pay-047-02 --size Standard_A1 --os-type Linux --attach-os-disk pay-047-02      ####建立vm並連結網卡和磁碟
+az vm create --resource-group pay01 --name pay-048-02 --nics pay-048-02 --size Standard_A1 --os-type Linux --attach-os-disk pay-048-02
+az vm create --resource-group pay01 --name pay-050-02 --nics pay-050-02 --size Standard_A1 --os-type Linux --attach-os-disk pay-050-02
+
+====================前台========================================================================================================================================
+
+
+az network public-ip create --resource-group Frontend01 --location eastasia --name fend-047-02 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group Frontend01 --location eastasia --name fend-048-02 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group Frontend01 --location eastasia --name fend-050-02 --allocation-method static --idle-timeout 4
+
+az network nic create --resource-group Frontend01 --location eastasia --name fend-047-02 --vnet-name vnetwork --subnet vnetwork --network-security-group frontend --public-ip-address fend-047-02
+az network nic create --resource-group Frontend01 --location eastasia --name fend-048-02 --vnet-name vnetwork --subnet vnetwork --network-security-group frontend --public-ip-address fend-048-02
+az network nic create --resource-group Frontend01 --location eastasia --name fend-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group frontend --public-ip-address fend-050-02
+
+az disk create --resource-group Frontend01 --name fend-047-02  --source fend-041-02 --sku Standard_LRS
+az disk create --resource-group Frontend01 --name fend-048-02  --source fend-041-02 --sku Standard_LRS
+az disk create --resource-group Frontend01 --name fend-050-02  --source fend-041-02 --sku Standard_LRS
+
+az vm create --resource-group Frontend01 --name fend-047-02 --nics fend-047-02 --size Standard_A2_v2 --os-type Linux --attach-os-disk fend-047-02
+az vm create --resource-group Frontend01 --name fend-048-02 --nics fend-048-02 --size Standard_A2_v2 --os-type Linux --attach-os-disk fend-048-02
+az vm create --resource-group Frontend01 --name fend-050-02 --nics fend-050-02 --size Standard_A2_v2 --os-type Linux --attach-os-disk fend-050-02
+
+
+=============================後台===========================================================================================================================================
+
+az network public-ip create --resource-group backend01 --location eastasia --name bend-047-02 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group backend01 --location eastasia --name bend-048-02 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group backend01 --location eastasia --name bend-050-02 --allocation-method static --idle-timeout 4
+
+az network nic create --resource-group backend01 --location eastasia --name bend-047-02 --vnet-name vnetwork --subnet vnetwork --network-security-group backend --public-ip-address bend-047-02
+az network nic create --resource-group backend01 --location eastasia --name bend-048-02 --vnet-name vnetwork --subnet vnetwork --network-security-group backend --public-ip-address bend-048-02
+az network nic create --resource-group backend01 --location eastasia --name bend-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group backend --public-ip-address bend-050-02
+
+az disk create --resource-group backend01 --name bend-047-02  --source bend-041-02 --sku Standard_LRS
+az disk create --resource-group backend01 --name bend-048-02  --source bend-041-02 --sku Standard_LRS
+az disk create --resource-group backend01 --name bend-050-02  --source bend-041-02 --sku Standard_LRS
+
+az vm create --resource-group backend01 --name bend-047-02 --nics bend-047-02 --size Standard_A1 --os-type Linux --attach-os-disk bend-047-02
+az vm create --resource-group backend01 --name bend-048-02 --nics bend-048-02 --size Standard_A1 --os-type Linux --attach-os-disk bend-048-02
+az vm create --resource-group backend01 --name bend-050-02 --nics bend-050-02 --size Standard_A1 --os-type Linux --attach-os-disk bend-050-02
+
+==================================APP===========================================================================================================================================
+
+az network public-ip create --resource-group app01 --location eastasia --name app-047-d21 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-047-d22 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-047-d23 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-048-d21 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-048-d22 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-048-d23 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d21 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d22 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d23 --allocation-method static --idle-timeout 4
+
+az network nic create --resource-group app01 --location eastasia --name app-047-d21 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-047-d21
+az network nic create --resource-group app01 --location eastasia --name app-047-d22 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-047-d22
+az network nic create --resource-group app01 --location eastasia --name app-047-d23 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-047-d23
+az network nic create --resource-group app01 --location eastasia --name app-048-d21 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-048-d21
+az network nic create --resource-group app01 --location eastasia --name app-048-d22 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-048-d22
+az network nic create --resource-group app01 --location eastasia --name app-048-d23 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-048-d23
+az network nic create --resource-group app01 --location eastasia --name app-050-d21 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d21
+az network nic create --resource-group app01 --location eastasia --name app-050-d22 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d22
+az network nic create --resource-group app01 --location eastasia --name app-050-d23 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d23
+
+az disk create --resource-group app01 --name app-047-d21  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-047-d22  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-047-d23  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-048-d21  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-048-d22  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-048-d23  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-050-d21  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-050-d22  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-050-d23  --source app-041-02 --sku Standard_LRS
+
+az vm create --resource-group app01 --name app-047-d21 --nics app-047-d21 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-047-d21
+az vm create --resource-group app01 --name app-047-d22 --nics app-047-d22 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-047-d22
+az vm create --resource-group app01 --name app-047-d23 --nics app-047-d23 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-047-d23
+az vm create --resource-group app01 --name app-048-d21 --nics app-048-d21 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-048-d21
+az vm create --resource-group app01 --name app-048-d22 --nics app-048-d22 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-048-d22
+az vm create --resource-group app01 --name app-048-d23 --nics app-048-d23 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-048-d23
+az vm create --resource-group app01 --name app-050-d21 --nics app-050-d21 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d21
+az vm create --resource-group app01 --name app-050-d22 --nics app-050-d22 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d22
+az vm create --resource-group app01 --name app-050-d23 --nics app-050-d23 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d23
