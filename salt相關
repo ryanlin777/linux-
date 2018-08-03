@@ -1,0 +1,15 @@
+salt 為proxy server 
+scripts 放置/etc/salt/deploy/scripts
+
+====slat 指令   salt hostname cmd.run "cat /hmoe/xxx.conf"
+015*fe* 
+015*be*
+015*pay*
+015*app*
+
+salt 015*app* test.ping  <測試ping015app>
+salt 015*app* cmd.run "cat /vhost/*.conf | grep  123.937.639.167"
+
+
+====slat 使用scripts 方法
+salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh
