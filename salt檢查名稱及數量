@@ -1,0 +1,77 @@
+####salt 檢查名稱及數量
+
+
+salt 010*lck* test.ping
+salt 010*lck* test.ping | grep True | wc -l
+
+salt 021*dyj* test.ping
+salt 021*dyj* test.ping | grep True | wc -l
+
+salt 024*cp728* test.ping
+salt 024*cp728* test.ping | grep True | wc -l
+
+salt 030*cp132* test.ping
+salt 030*cp132* test.ping | grep True | wc -l
+
+salt 031*cp366* test.ping
+salt 031*cp366* test.ping | grep True | wc -l
+
+salt 032*cp889* test.ping
+salt 032*cp889* test.ping | grep True | wc -l
+
+salt 033*klcp* test.ping
+salt 033*klcp* test.ping | grep True | wc -l
+
+salt 034*cai66* test.ping
+salt 034*cai66* test.ping | grep True | wc -l
+
+salt 035*cp699* test.ping
+salt 035*cp699* test.ping | grep True | wc -l
+
+salt 036*wcp* test.ping
+salt 036*wcp* test.ping | grep True | wc -l
+
+salt 037*cai99* test.ping
+salt 037*cai99* test.ping | grep True | wc -l
+
+salt 038*cai8* test.ping
+salt 038*cai8* test.ping | grep True | wc -l
+
+salt 039*cp256* test.ping
+salt 039*cp256* test.ping | grep True | wc -l
+
+salt 040*cai77* test.ping
+salt 040*cai77* test.ping | grep True | wc -l
+
+salt 041*vip500* test.ping
+salt 041*vip500* test.ping | grep True | wc -l
+
+salt 042*cai33* test.ping
+salt 042*cai33* test.ping | grep True | wc -l
+
+salt 043*sscp* test.ping
+salt 043*sscp* test.ping | grep True | wc -l
+
+salt 044*cp58* test.ping
+salt 044*cp58* test.ping | grep True | wc -l
+
+salt 045*w9* test.ping
+salt 045*w9* test.ping | grep True | wc -l
+
+salt 046*cbcp* test.ping
+salt 046*cbcp* test.ping | grep True | wc -l
+
+salt 047*cai16* test.ping
+salt 047*cai16* test.ping | grep True | wc -l
+
+salt 048*hck* test.ping
+salt 048*hck* test.ping | grep True | wc -l
+
+salt 050*hcp* test.ping
+salt 050*hcp* test.ping | grep True | wc -l
+
+salt 051*cp35* test.ping
+salt 051*cp35* test.ping | grep True | wc -l
+
+salt 054*cp288* test.ping
+salt 054*cp288* test.ping | grep True | wc -l
