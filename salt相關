@@ -13,6 +13,7 @@ salt *004* cmd.run "service nginx status | grep running"   <查看004 nginx狀�
 salt "047*be*" cmd.run "iptables -L -n"  <查看047 iptables>
 salt VPS* cmd.run "service zabbix-agent status | grep active"   <查看vps是zabbix agnet>
 
-====slat 使用scripts 方法
-salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh
-
+====salt 使用scripts 方法
+salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh   ///執行.sh
+====salt cmd 用法
+salt 041*pay*01* cmd.run "uname -n"   ////取hostname
