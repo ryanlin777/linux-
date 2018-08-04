@@ -7,9 +7,12 @@ scripts 放置/etc/salt/deploy/scripts
 015*pay*
 015*app*
 
-salt 015*app* test.ping  <測試ping015app>
-salt 015*app* cmd.run "cat /vhost/*.conf | grep  123.937.639.167"
-
+salt 015*app* test.ping  <測試ping 015app>
+salt 015*app* cmd.run "cat /vhost/*.conf | grep  123.937.639.167"  <查看*conf 有無123.937.639.167>
+salt *004* cmd.run "service nginx status | grep running"   <查看004 nginx狀態>
+salt "047*be*" cmd.run "iptables -L -n"  <查看047 iptables>
+salt VPS* cmd.run "service zabbix-agent status | grep active"   <查看vps是zabbix agnet>
 
 ====slat 使用scripts 方法
 salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh
+
