@@ -67,28 +67,3 @@ vi /opt/APP/openresty/nginx/conf/waf.conf
 ====安裝V14 nginx版本lua打開了
 vi /opt/APP/openresty/nginx/conf/waf.conf
 lua_need_request_body on;
-
-====slat 指令   salt hostname cmd.run "cat /hmoe/xxx.conf"
-015*fe*    <hostname用法>
-015*be*
-015*pay*
-015*app*
-salt 015*app* test.ping  <測試ping 015app>
-salt 015*app* cmd.run "cat /vhost/*.conf | grep  123.937.639.167"  <查看*conf 有無123.937.639.167>
-salt *004* cmd.run "service nginx status | grep running"   <查看004 nginx狀態>
-salt "047*be*" cmd.run "iptables -L -n"  <查看047 iptables>
-salt VPS* cmd.run "service zabbix-agent status | grep active"   <查看vps是zabbix agnet>
-====salt 執行程式 
-salt "*pay*01*" cmd.script salt://scripts/domain-check-pay.sh  <執行domain-check-pay.sh>
-salt "*pay*01*" cmd.run "yum install whois -y"   <yum 安裝>
-
-
-
-
-
-
-
-
-
-
-
