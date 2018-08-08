@@ -17,3 +17,12 @@ salt VPS* cmd.run "service zabbix-agent status | grep active"   <查看vps是zab
 salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh   ///執行.sh
 ====salt cmd 用法
 salt 041*pay*01* cmd.run "uname -n"   ////取hostname
+
+
+====salt維護
+service salt-master restart
+salt-key -L   ////查詢哪些主機對應憑証
+salt-key -d VPS-003-GX   ////刪除主機
+
+憑証名單主機路徑
+/etc/salt/pki/master/minions
