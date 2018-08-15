@@ -88,7 +88,7 @@ service salt-minion start
 echo $saltname > /etc/salt/minion_id
 
 #新增Salt-minion設定檔
-echo "master: 00.194.220.214" >> /etc/salt/minion
+echo "master: 35.194.220.214" >> /etc/salt/minion
 echo "tcp_keepalive: True" >> /etc/salt/minion
 echo "tcp_keepalive_idle: 60" >> /etc/salt/minion
 
