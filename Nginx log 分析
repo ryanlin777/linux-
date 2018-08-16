@@ -1,0 +1,24 @@
+NGINX Access log 分析
+
+時間                  			          16/Aug/2018:10:15:23 +0800
+請求來源            			           client=220.130.140.XX 
+請求方式             			           method=GET 
+记录请求的URL和HTTP协议  			       request="GET /apis/file/readImagxx/sys/201709/0583cd117afd42bd877acc8adf4e5651file.png HTTP/1.1" 
+请求的长度               			       request_length=493 
+http請求狀態            			       status=200 
+发送给客户端的总字节数   		           bytes_sent=7392 
+發送給客户端文檔內容大小  			       body_bytes_sent=7030 
+URL轉跳來源           			           referer=https://6623c99.com/home 
+請求網址                 			       host=6236c99.com 
+完整的请求地址           			       request_uri=/apis/file/readImagexx/sys/201709/0583cd117afd42bd877acc8adf4e5651file.png user_agent="Mozilla/5.0  Chrome/67.0.3396.99 Safari/537.36" 
+請求後端位置        			           upstream_addr=107.xxx.181.11:11037 
+upstream回應狀態           				   upstream_status=200 
+整個請求時間                			   request_time=0.040 
+請求過程中upstream響應時間               upstream_response_time=0.040 
+請求過程中upstream建立连接時間           upstream_connect_time=0.015 
+从上游服务器接收响应头的第一个字节之時間     upstream_header_time=0.040 
+                                           XFF=-
+                                           
+NGINX error log 分析                                           
+                                           
+                                           
