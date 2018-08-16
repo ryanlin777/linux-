@@ -20,5 +20,13 @@ upstream回應狀態           				   upstream_status=200
                                            XFF=-
                                            
 NGINX error log 分析                                           
-                                           
+
+時間	          		2018/08/11 02:50:22 
+錯誤代碼	            [error] 31687#0: *311492upstream timed out (110: Connection timed out) while reading response header from upstream 
+來源	                  client: 107.150.126.xxx
+主機	                  server: cdn.tpsfyoe74434.com 
+记录请求的URL和HTTP协议   request: "POST /apis/lotIssue/findWinResultToday HTTP/1.1
+upstream:                 http://107.167.xxx.11:11041/apis/lotIssue/findWinResultToday
+請求網址                  host: "70500xxx.com", 
+URL轉跳來源               referrer: "https://70500xxx.com/home"                                         
                                            
