@@ -59,3 +59,5 @@ iptables -L -n
 開網段名單
 -A INPUT -p tcp -m iprange --src-range x.x.x.x-x.x.x -m multiport --dports 443,80 -j ACCEPT
 
+查詢系統預設開機設定
+ systemctl list-unit-files
