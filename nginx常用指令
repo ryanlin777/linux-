@@ -31,6 +31,7 @@ lynx  https://X.XXXs.com
 
 ====網頁測速====
 httping  http://cX.XXX.com -SGbs -c 1800
+httping  d31.cei2n.com:6001 -Z -s -i 2 -c 10  ///隔2秒訪問10次顯示回應代碼
 
 ====支付測試====
 url/notify.php
