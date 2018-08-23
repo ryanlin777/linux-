@@ -61,3 +61,8 @@ iptables -L -n
 
 查詢系統預設開機設定
  systemctl list-unit-files
+ 
+====vi 取代set $AppMaintainMode 0;改為set $AppMaintainMode 1;====
+:%s/set $AppMaintainMode 0;/set $AppMaintainMode 1;/g     ////直接修改
+:%s/set $AppMaintainMode 0;/set $AppMaintainMode 1;/gc    ////確認yes才會修改
+
