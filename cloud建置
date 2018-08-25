@@ -1,0 +1,12 @@
+
+1.申請域名(架構提供域名)
+
+2.反代建立(建置機器，取ip)
+
+3.dns設置 (將ip加入網域，fe=cdn be=亂數 pay=pay app=d11.d12.d13.d21.22.23)
+
+4.反代確認 (設定檔設定正確並restart nginx，dns狀態正確，curl telnet 後端測試正確)若對後端不通需通知架構
+
+5.監控主機 (將salt.zabbix.salt hostname設定正確，web zabbix加入監控範本)
+
+6.最後確認再1-5查看一次
