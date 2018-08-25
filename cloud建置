@@ -10,3 +10,78 @@
 5.監控主機 (將salt.zabbix.salt hostname設定正確，web zabbix加入監控範本)
 
 6.最後確認再1-5查看一次
+
+
+2.反代建立
+Azure CLI //20180825
+
+=========================建置 Pay server=========================
+建置 pay server
+地區 → eastasia
+Cloud Name → pay-050-02 
+source → pay-041-02
+硬體效能系列 → Standard_A1
+===PAY指令
+####建立public-ip網卡
+az network public-ip create --resource-group pay01 --location eastasia --name pay-050-02 --allocation-method static --idle-timeout 4
+
+####建立公共靜態ip，並關連至網卡
+az network nic create --resource-group pay01 --location eastasia --name pay-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group pay_java --public-ip-address pay-050-02
+
+####複製磁碟(用pay041-02)做050的disk
+az disk create --resource-group pay01 --name pay-050-02  --source pay-041-02 --sku Standard_LRS
+
+####建立vm並連結網卡和磁碟
+az vm create --resource-group pay01 --name pay-050-02 --nics pay-050-02 --size Standard_A1 --os-type Linux --attach-os-disk pay-050-02
+
+
+=========================建置 FE server=========================
+建置 FE server
+地區 → eastasia
+Cloud Name → fend-050-02 
+source → fend-041-02
+硬體效能系列 → Standard_A2_v2
+===前台指令
+az network public-ip create --resource-group Frontend01 --location eastasia --name fend-050-02 --allocation-method static --idle-timeout 4
+az network nic create --resource-group Frontend01 --location eastasia --name fend-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group frontend --public-ip-address fend-050-02
+az disk create --resource-group Frontend01 --name fend-050-02  --source fend-041-02 --sku Standard_LRS
+az vm create --resource-group Frontend01 --name fend-050-02 --nics fend-050-02 --size Standard_A2_v2 --os-type Linux --attach-os-disk fend-050-02
+
+
+=========================建置 BE server=========================
+建置 BE server
+地區 → eastasia
+Cloud Name → bend-050-02 
+source → bend-041-02
+硬體效能 → Standard_A1
+===後台指令
+az network public-ip create --resource-group backend01 --location eastasia --name bend-050-02 --allocation-method static --idle-timeout 4
+az network nic create --resource-group backend01 --location eastasia --name bend-050-02 --vnet-name vnetwork --subnet vnetwork --network-security-group backend --public-ip-address bend-050-02
+az disk create --resource-group backend01 --name bend-050-02  --source bend-041-02 --sku Standard_LRS
+az vm create --resource-group backend01 --name bend-050-02 --nics bend-050-02 --size Standard_A1 --os-type Linux --attach-os-disk bend-050-02
+
+
+=========================建置 APP server=========================
+地區 → eastasia
+Cloud Name → app-050-d21 
+source → app-041-02
+硬體效能 → Standard_D4_v3
+===APP指令
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d21 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d22 --allocation-method static --idle-timeout 4
+az network public-ip create --resource-group app01 --location eastasia --name app-050-d23 --allocation-method static --idle-timeout 4
+
+az network nic create --resource-group app01 --location eastasia --name app-050-d21 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d21
+az network nic create --resource-group app01 --location eastasia --name app-050-d22 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d22
+az network nic create --resource-group app01 --location eastasia --name app-050-d23 --vnet-name vnetwork --subnet vnetwork --network-security-group app-java --public-ip-address app-050-d23
+
+az disk create --resource-group app01 --name app-050-d21  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-050-d22  --source app-041-02 --sku Standard_LRS
+az disk create --resource-group app01 --name app-050-d23  --source app-041-02 --sku Standard_LRS
+
+az vm create --resource-group app01 --name app-050-d21 --nics app-050-d21 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d21
+az vm create --resource-group app01 --name app-050-d22 --nics app-050-d22 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d22
+az vm create --resource-group app01 --name app-050-d23 --nics app-050-d23 --size Standard_D4_v3 --os-type Linux --attach-os-disk app-050-d23
+
+
+
