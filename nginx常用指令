@@ -1,3 +1,8 @@
+====nginx 設定檔查詢====
+後端ip
+ls -lrt /opt/APP/openresty/nginx/conf/vhost/*conf ; cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep -v "ssl_prefer_\|server_name\|server {" | grep server
+server_name
+ls -lrt /opt/APP/openresty/nginx/conf/vhost/*conf ; cat /opt/APP/openresty/nginx/conf/vhost/*conf | grep -v "server_name  _;" | grep server_name
 ====nginx log查詢====
 
 查看error.log
