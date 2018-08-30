@@ -1,7 +1,10 @@
 netstat -an | grep SYN_RECV | wc	要求連線的總數
 netstat -n -p | grep SYN_REC | sort -u	列出發送要求連線的IP地址
 ps auxwww | grep http | wc	查http連線數
-netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n	以IP為主，列出連線數
+netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n	\\\以IP為主，列出連線數
+netstat -n -p | grep SYN_REC | wc -l   \\\列出SYN_REC數量
+
+
 
 SYN-SENT：再發送連接請求後等待匹配的連接請求（如果有大量這樣的狀態包，檢查是否ddos了）
 SYN-RECEIVED：再收到和發送一個連接請求後等待對方對連接請求的確認（如有大量此狀態，估計被flood攻擊了）
