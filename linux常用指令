@@ -43,6 +43,9 @@ time tar -zpcvP -f /home/test_badkup4.tar.gz /opt/APP/openresty/nginx/conf/vhost
 解壓回去原路徑，因為打包有用P
 tar xvpfz  /root/home_test001-002-003.tar.gz -C /
 
+打包：tar cvf FileName.tar DirName
+解包： tar xvf FileName.tar
+
 ====收到SSL檔案比對 MD5指令====
 openssl x509 -noout -modulus -in 032-cp899.20180314.com.crt | openssl md5
 openssl rsa -noout -modulus -in 032-cp899.20180314.com.key | openssl md5
