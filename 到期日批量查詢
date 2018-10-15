@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#查看80.conf的server name 截取出來至home/check_name80.txt
+#cat /opt/APP/openresty/nginx/conf/vhost/*-F-1rp.conf  |  grep -v "server_name  _;" | grep server_name | sed 's/ /\n/g ' >> /home/check_name80.txt
+#tar xvf  frontend-054-02_2018-08-18.tar |  cat opt/APP/openresty/nginx/conf/vhost/*-F-1rp.conf |  grep -v "server_name  _;" | grep server_name | sed 's/ /\n/g '  >>   /home/check_name80.txt
+
+echo 確認時間:; date "+%Y%m%d"
+
+
+rm -rf /home/whois_report.txt
+
+filename='/home/whois_list.txt'
+
+exec < $filename
+
+while read line
+
+do
+#whois查詢whoist_list.txt  Expiration Date到期時間
+    whois $line 2>&1 | grep "Domain Name:\|Expiration Date:"  >> /home/whois_report.txt 
+    #echo $line # 一行一行印出內容
+
+    #echo 'a' $line # 印出 "a $line" 此行的內容, 可另外作特別處理.
+done
+
+cat /home/whois_report.txt
