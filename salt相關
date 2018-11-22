@@ -12,6 +12,14 @@ salt 054*app*23 cmd.run "/opt/APP/openresty/nginx/sbin/nginx -t"
 salt 054*app* cmd.run "cat /opt/APP/openresty/nginx/conf/vhost/*conf" | grep "AppMaintainLog\|AppMaintainMode"
 salt 048*fe* cmd.run "cat /opt/APP/openresty/nginx/conf/vhost/*.conf " | grep 'set $MAM'
 
+
+salt "051*fe*" cmd.run "cat /opt/Htdocs/service/wap_maintain.html | grep 维护"
+salt "051*fe*" cmd.run "sed -i 's/09.28-23:00/11.17-06:00/g' /opt/Htdocs/service/wap_maintain.html;"
+
+salt "041*fe*" cmd.run "cat /opt/Htdocs/service/maintain.html | grep 维护时间"
+salt "041*fe*" cmd.run "sed -i 's/07.31 06:20 ~ 07.31 07:20/11.17-06:00 ~ 11.17-07:00/g' /opt/Htdocs/service/maintain.html;"
+
+
 ====salt 使用scripts 方法
 salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh   ///執行.sh
 salt 051*be*01 cmd.script salt://scripts/upload_backup.sh
