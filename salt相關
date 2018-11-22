@@ -14,6 +14,8 @@ salt 048*fe* cmd.run "cat /opt/APP/openresty/nginx/conf/vhost/*.conf " | grep 's
 
 ====salt 使用scripts 方法
 salt "041*pay*01*" cmd.script salt://scripts/domain-check.sh   ///執行.sh
+salt 051*be*01 cmd.script salt://scripts/upload_backup.sh
+
 ====salt cmd 用法
 salt 041*pay*01* cmd.run "uname -n"   ////取hostnamed
 
