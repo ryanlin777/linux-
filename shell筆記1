@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo -e "\033[40;37m 黑底白字 welcome to old1boy\033[0m"
+echo -e "\033[41;37m 紅底白字 welcome to old2boy\033[0m"
+echo -e "\033[42;37m 綠底白字 welcome to old3boy\033[0m"
+echo -e "\033[43;37m 黃底白字 welcome to old4boy\033[0m"
+echo -e "\033[44;37m 藍底白字 welcome to old5boy\033[0m"
+echo -e "\033[45;37m 紫底白字 welcome to old6boy\033[0m"
+echo -e "\033[46;37m 天藍白字 welcome to old7boy\033[0m"
+echo -e "\033[47;30m 白底黑字 welcome to old8boy\033[0m"
+
+
+數字判斷(數字測試引數包括：)
+num1 -eq num2: 等於
+num1 -ne num2: 不等於
+num1 -le num2: 小於等於
+num1 -lt num2: 小於
+num1 -ge num2: 大於等於
+num1 -gt num2: 大於
+
+字串判斷(主要包括字串長度判斷，和字串判等兩類：)
+
+-n string: 字串長度非零
+-z string: 字串長度為零
+string1 = string2: 字串相等
+string1 != string2: 字串相等
+string: 字串不是null時為真，否則為假
+
+文件判斷(可以檢查文件是否存在，文件型別，許可權狀態等。下面常見的文件判斷引數：)
+
+-e file: file 存在
+-d file: file 是一個目錄
+-f file: file 是一個普通文件（regular file）
+-s file: file 非空（大小不為零）
+-w file: file 是否有可寫標誌
+-x file: file 是否有可執行標誌
