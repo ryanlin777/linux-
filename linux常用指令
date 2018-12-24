@@ -69,3 +69,7 @@ iptables -L -n
 :%s/set $AppMaintainMode 0;/set $AppMaintainMode 1;/g     ////直接修改
 :%s/set $AppMaintainMode 0;/set $AppMaintainMode 1;/gc    ////確認yes才會修改
 
+保留 60天內檔案
+find /home/backup  -type f -mtime +60 -name '*.tar' -delete
+
+
