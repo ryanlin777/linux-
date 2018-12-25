@@ -48,9 +48,13 @@ iptables -I INPUT -j syn-flood
 这里的--limit-burst=10相当于说最开始有10个可以匹配的包去转发，然后匹配的包的个数是根据--limit=50/s进行限制的，也就是每秒限制转发50个数据包，多余的会被下面符合要求的DROP规则去处理，进行丢弃，这样就实现了对数据包的限速问题。
 
 
+================可yum 安裝 用tcpdump 指令查看
 
-
-
+tcpdump -D   ///例出網卡
+tcpdump -i enp0s3 port 22 > test.txt   ///監聽enp0s3 22port
+tcpdump -i enp0s3 'tcp [13] & 2 =2' > test.txt   ///監聽SYN_RECV状态
+tcpdump -i eth1 'tcp[tcpflags] = tcp-syn' > test.txt   ///監聽SYN_RECV状态
+tcpdump -i eth1 'tcp[tcpflags] & tcp-syn != 0 and tcp[tcpflags] & tcp-ack != 0'   ///監聽抓SYN, ACK
 
 
 
