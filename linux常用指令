@@ -22,6 +22,9 @@ which nginx
 ====renew profile====
 source /etc/profile
 
+=== services enabled檢查
+ systemctl list-unit-files
+
 ====history加上時間標記====(需BASH 3.0 以上)
 rpm -q bash 看bash版本
 echo "HISTTIMEFORMAT='<%F %T>:'" >> /etc/profile  
