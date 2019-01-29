@@ -1,0 +1,4 @@
+===windows os cmd 
+nslookup
+server *.*.*.* //手動設定DNS server
+set type=ptr   //指定查詢類唬為RTR反解
