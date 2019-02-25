@@ -1,0 +1,27 @@
+Zabbix GD backup 
+
+●備份位置
+104zabbix 
+backup /root/backup/zabbix_db/ 到 GD AS_backup/zabbix/104zabbix
+
+crontab
+gdrive sync upload /root/backup/zabbix_db/  13lz8QPChLTjIDlMNNmS
+50 4 * * *  /root/del_zabbix_backup.sh
+23zabbix
+backup /root/backup/zabbix_db/ 到 GD AS_backup/zabbix/23zabbix
+
+crontab 
+gdrive sync upload /root/backup/zabbix_db/  f32rfgusdhgfri
+50 4 * * *  /root/del_zabbix_backup.sh
+
+
+●gdrive 查詢
+
+gdrive  list
+gdrive sync list
+
+
+下載
+gdrive download GD上对应的文件ID --path 本地文件夹路径
+#或
+gdrive download GD上对应的文件ID
