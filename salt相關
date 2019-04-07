@@ -36,3 +36,11 @@ salt-key -d VPS-003-GX   ////刪除主機
 /etc/salt/pki/master/minions
 scripts存放路徑
 /etc/salt/deploy/scripts/
+
+
+手動方式在salt mastar 建key
+1.到proxyserver 上把key 復製改名到這個位置
+cp /root/minion_key/minion.pub /etc/salt/pki/master/minions/VPS-019-HB
+
+
+
