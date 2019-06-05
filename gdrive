@@ -14,7 +14,8 @@ crontab
 gdrive sync upload /root/backup/zabbix_db/  f32rfgusdhgfri
 50 4 * * *  /root/del_zabbix_backup.sh
 
-
+●gdrive 删除帐号设定
+.gdrive
 ●gdrive 查詢
 
 gdrive  list
