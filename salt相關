@@ -47,7 +47,7 @@ cp /root/minion_key/minion.pub /etc/salt/pki/master/minions/VPS-019-HB
 删除旧有 salt  0*fe* cmd.run 'rm -rf /etc/zabbix/ngx_apislogin.sh ; ll  /etc/zabbix/ngx_apislogin.sh'
 cp发送   salt 0*fe* cp.get_file salt://files/ngx_apislogin.sh /etc/zabbix
 
-====salt vps test https ans dns
+====salt vps test https and dns
 salt 'VPS*' network.connect URL 443
 salt 'VPS*' dig.A URL
 
