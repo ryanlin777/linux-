@@ -32,21 +32,23 @@ service salt-master restart
 salt-key -L   ////查詢哪些主機對應憑証
 salt-key -d VPS-003-GX   ////刪除主機
 
-憑証名單主機路徑
+====憑証名單主機路徑
 /etc/salt/pki/master/minions
-scripts存放路徑
+====●scripts存放路徑
 /etc/salt/deploy/scripts/
 
 
-手動方式在salt mastar 建key
+====手動方式在salt mastar 建key
 1.到proxyserver 上把key 復製改名到這個位置
 cp /root/minion_key/minion.pub /etc/salt/pki/master/minions/VPS-019-HB
 
-用salt master 传送档案至 底下主机
-
+====用salt master 传送档案至 底下主机
 上传档案路径 /etc/salt/deploy/files  
 删除旧有 salt  0*fe* cmd.run 'rm -rf /etc/zabbix/ngx_apislogin.sh ; ll  /etc/zabbix/ngx_apislogin.sh'
 cp发送   salt 0*fe* cp.get_file salt://files/ngx_apislogin.sh /etc/zabbix
 
+====salt vps test https ans dns
+salt 'VPS*' network.connect URL 443
+salt 'VPS*' dig.A URL
 
 
